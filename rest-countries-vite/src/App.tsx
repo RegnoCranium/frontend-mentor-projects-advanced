@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import LazyLoadImage from "./LazyLoadImg";
 
 type countryData = {
   flags: {
@@ -403,7 +404,7 @@ function App() {
                         setIsDetailCardOpen(true);
                       }}
                     >
-                      <img
+                      <LazyLoadImage
                         className="w-full h-[160px]"
                         src={countryData.flags.png}
                         alt={countryData.flags.alt}
