@@ -14,7 +14,7 @@ export default function CountryDetail() {
 
   useEffect(() => {
     if (countryCode === undefined) return;
-
+    setLoading(true);
     fetchCountryByCode(countryCode)
       .then((data) => {
         if (data && data.length > 0) {
