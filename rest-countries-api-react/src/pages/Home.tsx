@@ -82,7 +82,6 @@ function Home() {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
             >
-              {/*<!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->*/}
               <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
             </svg>
           </div>
@@ -103,17 +102,23 @@ function Home() {
           )}
         </button>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,265px)] gap-y-8 gap-x-8 justify-between">
-        {filteredCountries.map((country) => (
-          <Link
-            className="w-[265px] mx-auto sm:mx-0"
-            key={country.cca3}
-            to={`/${country.ccn3}`}
-          >
-            <CountryCard country={country} />
-          </Link>
-        ))}
-      </div>
+      {filteredCountries.length === 0 ? (
+        <div className="text-center text-xl dark:text-white-text-elements">
+          No countries found
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,265px)] gap-y-8 gap-x-8 justify-between">
+          {filteredCountries.map((country) => (
+            <Link
+              className="w-[265px] mx-auto sm:mx-0"
+              key={country.cca3}
+              to={`/${country.ccn3}`}
+            >
+              <CountryCard country={country} />
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
